@@ -139,6 +139,34 @@
             "title": "The order the option appears in the install form.",
             "description": "Note that JavaScript does **not** retain the order of keys in an object. This property must be added to ensure your options are rendered in the right order."
           },
+          "properties": {
+            "$ref": "#/definitions/optionDeclarationCommonProperties"
+          },
+          "maxItems": {
+            "title": "Specify the max number of entries in an array object.",
+            "type": "number"
+          },
+          "minimum": {
+            "title": "The minimum number allowed in the field.",
+            "type": "number"
+          },
+          "maximum": {
+            "title": "The maximum number allowed in the field.",
+            "type": "number"
+          },
+          "units": {
+            "title": "Declare which units the installer can choose. Used with {\"type\": \"object\", \"format\": \"number\"}",
+            "description": "Presented as a floating-point number input and unit selector. This is useful when a customer has to set a specific size on an element.",
+            "type": "array",
+            "default": [
+              "px",
+              "em",
+              "%"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
           "type": {
             "type": "string",
             "title": "Declares the type this option will use in your app's INSTALL_OPTIONS constant.",
