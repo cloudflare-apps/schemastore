@@ -37,7 +37,8 @@
       "description": "Each declaration will appear in your app's installer for end-user customization. Their choices will accessible in your app's JavaScript resources as the constant `INSTALL_OPTIONS`.",
       "additionalProperties": {
         "required": [
-          "order"
+          "order",
+          "type"
         ],
         "oneOf": [
           {
@@ -54,6 +55,11 @@
         "type": "object",
         "title": "The key which your option will be defined under.",
         "description": "The key should be camelCased.",
+        "default": {
+          "order": 0,
+          "title": "",
+          "type": ""
+        },
         "properties": {
           "title": {
             "type": "string",
@@ -191,13 +197,14 @@
             "title": "Declares the type this option will use in your app's INSTALL_OPTIONS constant.",
             "default": "string",
             "enum": [
-              "string",
-              "number",
-              "boolean",
-              "object",
               "array",
+              "boolean",
               "help",
-              "hidden"
+              "hidden",
+              "integer",
+              "number",
+              "object",
+              "string"
             ]
           },
           "placeholder": {
@@ -239,6 +246,7 @@
               "element",
               "email",
               "image",
+              "number",
               "page",
               "radios",
               "richtext",
@@ -262,6 +270,20 @@
               "buttonLabel": {
                 "type": "string",
                 "title": "Button label"
+              }
+            }
+          },
+          "items": {
+            "title": "Declarations for each item in an array.",
+            "type": "object",
+            "description": "Used with {\"type\": \"array\"}. Must have \"properties\" key.",
+            "default": {
+              "type": "object",
+              "properties": {}
+            },
+            "properties": {
+              "properties": {
+                "$ref": "#/definitions/optionDeclarationCommonProperties"
               }
             }
           }
